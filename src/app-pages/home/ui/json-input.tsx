@@ -13,8 +13,10 @@ export function JsonInput({ value, onChange, error, rows = 18 }: JsonInputProps)
 
   return (
     <div>
-      <label className="mb-2 block text-sm text-gray-300">Input JSON</label>
-      <Textarea value={value} onChange={handleChange} rows={rows} className="font-mono text-sm" />
+      <label className="mb-2 block text-sm text-gray-300">
+        Input JSON
+        <Textarea value={value} onChange={handleChange} rows={rows} className="font-mono text-sm" />
+      </label>
       {error && <p className="mt-2 text-sm text-red-400">Error: {error}</p>}
     </div>
   );
