@@ -7,11 +7,13 @@
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
+    "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "clean-install": "rimraf .next node_modules package-lock.json && npm i"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
+    "@uiw/react-json-view": "^2.0.0-alpha.39",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.555.0",
