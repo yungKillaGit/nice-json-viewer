@@ -19,6 +19,10 @@
     "type": "git",
     "url": "git+https://github.com/yungKillaGit/nice-json-viewer.git"
   },
+  "license": "MIT",
+  "volta": {
+    "node": "24.11.1"
+  },
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",
@@ -75,8 +79,5 @@
     "typescript": "^5",
     "vite": "^7.2.6",
     "vitest": "^4.0.15"
-  },
-  "volta": {
-    "node": "24.11.1"
   }
 }
