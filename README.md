@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<a id="readme-top"></a>
+
+<br />
+<div align="center">
+  <a href="https://github.com/yungKillaGit/nice-json-viewer">
+    <img src="public/images/logo.png" alt="Logo" width="120" height="120">
+  </a>
+
+  <h3 align="center">Nice JSON Viewer</h3>
+
+  <p align="center">
+    Paste your JSON and get a readable, formatted output instantly.
+    <br />
+    <a href="https://github.com/yungKillaGit/nice-json-viewer"><strong>Explore the docs »</strong></a>
+  </p>
+</div>
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#about-the-project">About The Project</a>
+      <ul><li><a href="#built-with">Built With</a></li></ul>
+    </li>
+    <li><a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
+## About The Project
+
+[![Product Screenshot](public/images/app-screenshot.png)](https://nice-json-viewer.vercel.app)
+
+Nice JSON Viewer is a tool for quickly viewing JSON in a readable format. Just paste your JSON and instantly get a clean, structured result with no extra steps.
+
+## Built With
+* [Next.js](https://nextjs.org/)
+* [React](https://reactjs.org/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [@uiw/react-json-view](https://github.com/uiwjs/react-json-view)
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
+* Node.js >= 24
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/yungKillaGit/nice-json-viewer.git
+   cd nice-json-viewer
+   ```
+2. Install dependencies
+   ```sh
+   npm install
+   ```
+3. Start the development server
+   ```sh
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See the [open issues](https://github.com/yungKillaGit/nice-json-viewer/issues) for a full list of proposed features (and known issues).
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Roadmap
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [x] Error handling
+- [x] Display formatted JSON
+- [ ] Save entered JSON
+- [ ] Import/Export JSON
+- [ ] Search
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+Distributed under the MIT License. See `LICENSE` for more information.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Maintainer: [yungKillaGit](https://github.com/yungKillaGit)
+<br>
+Project Link: [https://github.com/yungKillaGit/nice-json-viewer](https://github.com/yungKillaGit/nice-json-viewer)
