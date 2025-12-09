@@ -1,23 +1,25 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useId } from 'react';
+import { Field, FieldLabel } from '~/shadcn/ui/field';
 import { Textarea } from '~/shadcn/ui/textarea';
 
 interface JsonInputProps {
   value: string;
   onChange: (value: string) => void;
-  error?: string | undefined;
-  rows?: number;
 }
 
-export function JsonInput({ value, onChange, error, rows = 18 }: JsonInputProps) {
+export function JsonInput({ value, onChange }: JsonInputProps) {
   const handleChange = (event_: ChangeEvent<HTMLTextAreaElement>) => onChange(event_.target.value);
+  const inputId = useId();
 
   return (
-    <div>
-      <label className="mb-2 block text-sm text-gray-300">
-        Input JSON
-        <Textarea value={value} onChange={handleChange} rows={rows} className="font-mono text-sm" />
-      </label>
-      {error && <p className="mt-2 text-sm text-red-400">Error: {error}</p>}
-    </div>
+    <Field className="flex h-full flex-col">
+      <FieldLabel htmlFor={inputId}>Input JSON</FieldLabel>
+      <Textarea
+        id={inputId}
+        value={value}
+        onChange={handleChange}
+        className="min-h-0 flex-1 font-mono text-sm"
+      />
+    </Field>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
+import { FieldError } from '~/shadcn/ui/field';
 import { JsonInput } from './json-input';
 import { JsonOutput } from './json-output';
 
@@ -21,9 +22,15 @@ export function JsonViewer({ initialText = '{}' }: Props) {
   }, [text]);
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <JsonInput value={text} onChange={(v: string) => setText(v)} error={error} rows={18} />
-      <JsonOutput data={data} />
+    <div className="grid min-h-[80vh] grid-rows-[1fr_auto] gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <JsonInput value={text} onChange={(v: string) => setText(v)} />
+        <JsonOutput data={data} />
+      </div>
+
+      <div className="min-h-6">
+        {error && <FieldError errors={[{ message: error }]}></FieldError>}
+      </div>
     </div>
   );
 }
