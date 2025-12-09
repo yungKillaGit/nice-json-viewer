@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nice-json-viewer.vercel.app/sitemap.xml
