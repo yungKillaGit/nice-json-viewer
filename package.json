@@ -1,12 +1,29 @@
 {
-  "name": "nextjs-template",
+  "name": "nice-json-viewer",
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "description": "A fast, clean JSON viewer for React and Next.js. Paste your JSON and get a readable, formatted output instantly.",
+  "keywords": [
+    "json",
+    "viewer",
+    "react",
+    "nextjs",
+    "formatter",
+    "pretty",
+    "parser",
+    "visualizer"
+  ],
+  "homepage": "https://github.com/yungKillaGit/nice-json-viewer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yungKillaGit/nice-json-viewer.git"
+  },
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
+    "preview": "npm run build && npm run start",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "clean-install": "rimraf .next node_modules package-lock.json && npm i",
@@ -15,6 +32,7 @@
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-scroll-area": "^1.2.10",
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
     "@uiw/react-json-view": "^2.0.0-alpha.39",

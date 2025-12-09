@@ -22,15 +22,16 @@ export function JsonViewer({ initialText = '{}' }: Props) {
   }, [text]);
 
   return (
-    <div className="grid min-h-[80vh] grid-rows-[1fr_auto] gap-4">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <JsonInput value={text} onChange={(v: string) => setText(v)} />
-        <JsonOutput data={data} />
+    <div className="flex max-h-[80vh] min-h-[80vh] flex-col gap-4">
+      <div className="flex min-h-0 flex-1 flex-col gap-4 md:flex-row">
+        <div className="min-h-0 flex-1">
+          <JsonInput value={text} onChange={(v: string) => setText(v)} />
+        </div>
+        <div className="min-h-0 flex-1">
+          <JsonOutput data={data} />
+        </div>
       </div>
-
-      <div className="min-h-6">
-        {error && <FieldError errors={[{ message: error }]}></FieldError>}
-      </div>
+      <div className="min-h-6">{error && <FieldError errors={[{ message: error }]} />}</div>
     </div>
   );
 }
