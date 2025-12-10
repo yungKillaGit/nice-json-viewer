@@ -32,12 +32,7 @@ const eslintConfig = defineConfig([
           },
         },
       ],
-    },
-  },
-  {
-    files: ['**/*.tsx', '**/*.jsx'],
-    rules: {
-      'unicorn/no-null': 'off',
+      'unicorn/no-null': 'off'
     },
   },
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
