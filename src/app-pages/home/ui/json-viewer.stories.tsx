@@ -17,15 +17,20 @@ export default meta;
 
 type Story = StoryObj<typeof JsonViewer>;
 
-export const Default: Story = {
-  args: {
-    initialText: '{"name": "John", "age": 30}',
-  },
-};
+export const Default: Story = {};
 
 export const InvalidJson: Story = {
   args: {
     initialText: '{name: John, age: 30}',
+  },
+};
+
+export const LongLongString: Story = {
+  args: {
+    initialText: JSON.stringify({
+      message:
+        'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq',
+    }),
   },
 };
 
