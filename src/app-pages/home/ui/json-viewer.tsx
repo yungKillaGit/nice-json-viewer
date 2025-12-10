@@ -3,12 +3,13 @@ import { useMemo, useState } from 'react';
 import { FieldError } from '~/shadcn/ui/field';
 import { JsonInput } from './json-input';
 import { JsonOutput } from './json-output';
+import { initialJsonString } from '../lib/constants';
 
 interface Props {
   initialText?: string;
 }
 
-export function JsonViewer({ initialText = '{}' }: Props) {
+export function JsonViewer({ initialText = initialJsonString }: Props) {
   const [text, setText] = useState<string>(initialText);
 
   const { data, error } = useMemo(() => {
@@ -22,16 +23,16 @@ export function JsonViewer({ initialText = '{}' }: Props) {
   }, [text]);
 
   return (
-    <div className="flex max-h-[80vh] min-h-[80vh] flex-col gap-4">
-      <div className="flex min-h-0 flex-1 flex-col gap-4 md:flex-row">
-        <div className="min-h-0 flex-1">
+    <div>
+      <div className="flex h-[70vh] flex-col gap-4 md:flex-row">
+        <div className="h-1/2 w-full md:h-full md:w-1/2">
           <JsonInput value={text} onChange={(v: string) => setText(v)} />
         </div>
-        <div className="min-h-0 flex-1">
+        <div className="h-1/2 w-full md:h-full md:w-1/2">
           <JsonOutput data={data} />
         </div>
       </div>
-      <div className="min-h-6">{error && <FieldError errors={[{ message: error }]} />}</div>
+      <div className="mt-2 min-h-6">{error && <FieldError errors={[{ message: error }]} />}</div>
     </div>
   );
 }

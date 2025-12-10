@@ -15,8 +15,13 @@ export function JsonInput({ value, onChange }: JsonInputProps) {
   return (
     <Field className="flex h-full min-h-0 flex-col">
       <FieldLabel htmlFor={inputId}>Input JSON</FieldLabel>
-      <ScrollArea className="min-h-0 flex-1">
-        <Textarea id={inputId} value={value} onChange={handleChange} className="h-full" />
+      <ScrollArea className="h-full max-h-full min-h-[120px] flex-1">
+        <Textarea
+          id={inputId}
+          value={value}
+          onChange={handleChange}
+          className="h-full max-h-full min-h-[120px]"
+        />
       </ScrollArea>
     </Field>
   );
