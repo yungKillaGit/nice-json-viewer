@@ -32,7 +32,8 @@ const eslintConfig = defineConfig([
           },
         },
       ],
-      'unicorn/no-null': 'off'
+      'unicorn/no-null': 'off',
+      'unicorn/no-useless-undefined': 'off',
     },
   },
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
