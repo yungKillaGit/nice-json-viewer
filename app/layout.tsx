@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { baseURL, description, siteName, title } from '~/shared/config/env-config';
 import './globals.css';
 
 const geistSans = Geist({
@@ -13,31 +14,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Nice JSON Viewer',
-  description: 'Quickly view and format your JSON in a readable way. Paste your JSON and instantly get a clean, structured result.',
-  keywords: ['JSON', 'viewer', 'formatter', 'tool', 'online', 'developer'],
+  title,
+  description,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  alternates: {
+    canonical: baseURL,
+  },
+  metadataBase: new URL(baseURL),
   openGraph: {
-    title: 'Nice JSON Viewer',
-    description: 'Quickly view and format your JSON in a readable way.',
-    url: 'https://nice-json-viewer.vercel.app',
-    siteName: 'Nice JSON Viewer',
+    title,
+    description,
+    siteName,
+    url: baseURL,
     images: [
       {
-        url: '/images/app-screenshot.png',
-        width: 1280,
-        height: 720,
-        alt: 'Nice JSON Viewer screenshot',
+        url: '/og-image.png',
+        alt: `${siteName} Open Graph Image`,
       },
     ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Nice JSON Viewer',
-    description: 'Quickly view and format your JSON in a readable way.',
-    images: ['/images/app-screenshot.png'],
-    creator: '@yungKillaGit',
   },
 };
 

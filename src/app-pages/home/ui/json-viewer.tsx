@@ -17,7 +17,7 @@ export function JsonViewer({ initialText = initialJsonString }: Props) {
 
   return (
     <div>
-      <div className="flex h-[70vh] flex-col gap-4 md:flex-row">
+      <div className="flex h-[60vh] flex-col gap-4 md:flex-row xl:h-[70vh]">
         <div className="h-1/2 w-full md:h-full md:w-1/2">
           <JsonInput value={text} onChange={(value) => setText(value)} />
         </div>
