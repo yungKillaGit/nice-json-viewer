@@ -23,15 +23,7 @@ const eslintConfig = defineConfig([
           endOfLine: 'auto',
         },
       ],
-      'unicorn/prevent-abbreviations': [
-        'error',
-        {
-          replacements: {
-            props: false,
-            utils: false,
-          },
-        },
-      ],
+      'unicorn/prevent-abbreviations': 'off',
       'unicorn/no-null': 'off',
       'unicorn/no-useless-undefined': 'off',
     },
