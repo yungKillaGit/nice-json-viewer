@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { baseURL, description, siteName, title } from '~/shared/config/env-config';
+import {
+  baseURL,
+  description,
+  googleSiteVerification,
+  siteName,
+  title,
+} from '~/shared/config/env-config';
 import './globals.css';
 
 const geistSans = Geist({
@@ -39,6 +45,9 @@ export const metadata: Metadata = {
         alt: `${siteName} Open Graph Image`,
       },
     ],
+  },
+  other: {
+    'google-site-verification': googleSiteVerification,
   },
 };
 
