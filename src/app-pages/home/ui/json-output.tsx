@@ -5,6 +5,7 @@ import { useId } from 'react';
 import { Field, FieldLabel } from '~/shadcn/ui/field';
 import { ScrollArea } from '~/shadcn/ui/scroll-area';
 import { isPrimitive } from '../lib/is-primitive';
+import { prettifyJson } from '../lib/prettify-json';
 
 interface JsonOutputProps {
   data?: unknown;
@@ -29,7 +30,7 @@ export function JsonOutput({ data }: JsonOutputProps) {
                 background: darkTheme['--w-rjv-background-color'],
               }}
             >
-              {JSON.stringify(data, null, 2)}
+              {prettifyJson(data)}
             </pre>
           ) : (
             <JsonView

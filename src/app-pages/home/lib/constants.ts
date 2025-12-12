@@ -1,3 +1,5 @@
+import { prettifyJson } from './prettify-json';
+
 export const initialJson = {
   user: {
     id: 42,
@@ -44,4 +46,4 @@ export const initialJson = {
   lastLogin: '2025-12-09T10:15:00Z',
 };
 
-export const initialJsonString = JSON.stringify(initialJson, null, 2);
+export const initialJsonString = prettifyJson(initialJson);
