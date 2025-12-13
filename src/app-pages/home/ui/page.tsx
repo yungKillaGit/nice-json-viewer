@@ -1,4 +1,3 @@
-import { initialJsonString } from '../lib/constants';
 import { parseJson } from '../lib/parse-json';
 import { prettifyJson } from '../lib/prettify-json';
 import { JsonViewer } from './json-viewer';
@@ -8,7 +7,7 @@ export async function HomePage({
 }: {
   searchParams: Promise<Partial<{ json: string }>>;
 }) {
-  let initialText = initialJsonString;
+  let initialText;
   const { json } = await searchParams;
 
   if (json) {

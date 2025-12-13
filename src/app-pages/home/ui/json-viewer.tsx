@@ -2,7 +2,6 @@
 import { debounce } from 'lodash-es';
 import { useState } from 'react';
 import { FieldError } from '~/shadcn/ui/field';
-import { initialJsonString } from '../lib/constants';
 import { parseJson } from '../lib/parse-json';
 import { useSyncInput } from '../model/use-sync-input';
 import { JsonInput } from './json-input';
@@ -12,8 +11,8 @@ interface Props {
   initialText?: string;
 }
 
-export function JsonViewer({ initialText = initialJsonString }: Props) {
-  const [text, setText] = useState<string>(initialText);
+export function JsonViewer({ initialText }: Props) {
+  const [text, setText] = useState<string | undefined>(initialText);
   const { data, error } = parseJson(text);
   const { syncInput } = useSyncInput();
   const debouncedSyncInput = debounce(syncInput, 300);

@@ -4,7 +4,7 @@ import { ScrollArea } from '~/shadcn/ui/scroll-area';
 import { Textarea } from '~/shadcn/ui/textarea';
 
 interface JsonInputProps {
-  value: string;
+  value: string | undefined;
   onChange: (value: string) => void;
 }
 

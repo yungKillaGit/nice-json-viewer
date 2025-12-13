@@ -1,5 +1,8 @@
-export function parseJson(text: string): { data?: unknown; error?: string } {
+export function parseJson(text: string | undefined): { data?: unknown; error?: string } {
   try {
+    if (text === undefined) {
+      return {};
+    }
     const parsed = JSON.parse(text);
     return { data: parsed };
   } catch (error_: unknown) {
