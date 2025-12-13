@@ -1,6 +1,6 @@
 'use client';
 import { debounce } from 'lodash-es';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { FieldError } from '~/shadcn/ui/field';
 import { initialJsonString } from '../lib/constants';
 import { parseJson } from '../lib/parse-json';
@@ -14,7 +14,7 @@ interface Props {
 
 export function JsonViewer({ initialText = initialJsonString }: Props) {
   const [text, setText] = useState<string>(initialText);
-  const { data, error } = useMemo(() => parseJson(text), [text]);
+  const { data, error } = parseJson(text);
   const { syncInput } = useSyncInput();
   const debouncedSyncInput = debounce(syncInput, 300);
 
