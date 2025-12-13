@@ -1,6 +1,6 @@
 export function parseJson(text: string | undefined): { data?: unknown; error?: string } {
   try {
-    if (text === undefined) {
+    if (text === undefined || text.trim() === '') {
       return {};
     }
     const parsed = JSON.parse(text);
