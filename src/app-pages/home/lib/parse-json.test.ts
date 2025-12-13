@@ -5,7 +5,6 @@ const mockObject = { a: 1 };
 const mockArray = [1, 2, 3];
 const mockString = 'hello';
 const invalidJson = '{a:1}';
-const emptyJson = '';
 
 describe('parseJson', () => {
   it('returns error for unquoted string', () => {
@@ -61,9 +60,15 @@ describe('parseJson', () => {
     expect(result.error).toBeDefined();
   });
 
-  it('returns error for empty string', () => {
-    const result = parseJson(emptyJson);
+  it('returns nothing for undefined input', () => {
+    const result = parseJson(undefined);
     expect(result.data).toBeUndefined();
-    expect(result.error).toBeDefined();
+    expect(result.error).toBeUndefined();
+  });
+
+  it('returns nothing for empty string input', () => {
+    const result = parseJson('');
+    expect(result.data).toBeUndefined();
+    expect(result.error).toBeUndefined();
   });
 });
