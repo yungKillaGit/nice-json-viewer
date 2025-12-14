@@ -76,7 +76,7 @@ See the [open issues](https://github.com/yungKillaGit/nice-json-viewer/issues) f
 
 - [x] Error handling
 - [x] Display formatted JSON
-- [ ] Save entered JSON
+- [x] Save entered JSON
 - [ ] Import/Export JSON
 - [ ] Search
 
