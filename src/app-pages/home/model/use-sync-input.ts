@@ -5,16 +5,14 @@ import { parseJson } from '../lib/parse-json';
 
 export const useSyncInput = () => {
   const router = useRouter();
-  const { createQueryString, searchParams } = useQueryParams();
+  const { createQueryString } = useQueryParams();
 
   const syncInput = (inputJson: string) => {
     const { data, error } = parseJson(inputJson);
     if (error) {
-      if (searchParams.has('json')) {
-        router.replace(globalThis.location.pathname);
-      }
+      router.replace(globalThis.location.pathname);
     } else {
-      const encoded = encodeURIComponent(JSON.stringify(data));
+      const encoded = JSON.stringify(data);
       router.replace('?' + createQueryString('json', encoded));
     }
   };

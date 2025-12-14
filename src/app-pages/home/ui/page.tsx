@@ -11,8 +11,7 @@ export async function HomePage({
   const { json } = await searchParams;
 
   if (json) {
-    const decodedJson = decodeURIComponent(json);
-    const { data, error } = parseJson(decodedJson);
+    const { data, error } = parseJson(json);
     if (!error) {
       initialText = prettifyJson(data);
     }
