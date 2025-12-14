@@ -1,11 +1,9 @@
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
+import { playwright } from '@vitest/browser-playwright';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
+import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
-
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-
-import { playwright } from '@vitest/browser-playwright';
 
 const dirname =
   import.meta.dirname === undefined
@@ -13,7 +11,9 @@ const dirname =
     : import.meta.dirname;
 
 export default defineConfig({
+  plugins: [tsconfigPaths()],
   test: {
+    environment: 'happy-dom',
     projects: [
       {
         extends: true,
