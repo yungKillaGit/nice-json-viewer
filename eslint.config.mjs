@@ -1,13 +1,16 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-
+import { includeIgnoreFile } from '@eslint/compat';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
 import prettier from 'eslint-config-prettier/flat';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import { defineConfig, globalIgnores } from 'eslint/config';
+import { defineConfig } from 'eslint/config';
+import { fileURLToPath } from 'node:url';
+
+const prettierIgnorePath = fileURLToPath(new URL('.prettierignore', import.meta.url));
 
 const eslintConfig = defineConfig([
+  includeIgnoreFile(prettierIgnorePath),
   ...nextVitals,
   ...nextTs,
   eslintPluginUnicorn.configs.recommended,
@@ -28,7 +31,6 @@ const eslintConfig = defineConfig([
       'unicorn/no-useless-undefined': 'off',
     },
   },
-  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
 ]);
 
 export default eslintConfig;
