@@ -42,7 +42,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
-      "npx vitest --run || echo \"No test files found, skipping tests\""
+      "npx vitest run || echo \"No test files found, skipping tests\""
     ]
   },
   "dependencies": {
