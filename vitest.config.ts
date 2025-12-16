@@ -19,7 +19,7 @@ export default defineConfig({
         extends: true,
         test: {
           name: 'unit',
-          include: ['**/*.test.ts'],
+          include: ['**/*.test.{ts,tsx}'],
         },
       },
       {
@@ -37,5 +37,7 @@ export default defineConfig({
         },
       },
     ],
+    setupFiles: './setup-tests.ts',
+    globals: true,
   },
 });
