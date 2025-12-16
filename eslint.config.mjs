@@ -29,6 +29,8 @@ const eslintConfig = defineConfig([
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/no-null': 'off',
       'unicorn/no-useless-undefined': 'off',
+      'react/self-closing-comp': 'warn',
+      curly: ['error', 'all'],
     },
   },
 ]);
