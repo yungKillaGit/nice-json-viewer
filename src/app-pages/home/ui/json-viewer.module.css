@@ -1,0 +1,13 @@
+@reference 'tailwindcss';
+
+.pageSection {
+  @apply flex flex-1 flex-col min-h-0;
+}
+
+.field {
+  @apply h-full min-h-0;
+}
+
+.scrollableArea {
+  @apply max-h-full overflow-auto h-full;
+}

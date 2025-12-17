@@ -1,11 +1,13 @@
 'use client';
 import JsonView from '@uiw/react-json-view';
 import { darkTheme } from '@uiw/react-json-view/dark';
+import clsx from 'clsx';
 import { useId } from 'react';
 import { Field, FieldLabel } from '~/shadcn/ui/field';
 import { ScrollArea } from '~/shadcn/ui/scroll-area';
 import { isPrimitive } from '../lib/is-primitive';
 import { prettifyJson } from '../lib/prettify-json';
+import styles from './json-viewer.module.css';
 
 interface JsonOutputProps {
   data?: unknown;
@@ -15,31 +17,29 @@ export function JsonOutput({ data }: JsonOutputProps) {
   const inputId = useId();
 
   return (
-    <Field className="flex h-full min-h-0 flex-col">
+    <Field className={styles.field}>
       <FieldLabel htmlFor={inputId}>Output JSON</FieldLabel>
-      <ScrollArea className="border-input h-full max-h-full min-h-[120px] flex-1 rounded-md border">
-        <div className="h-full max-h-full min-h-[120px]">
+      <ScrollArea className={clsx(styles.scrollableArea, 'border-input rounded-md border')}>
+        <div className="h-full">
           {data === undefined ? (
-            <pre className="h-full max-h-full px-3 py-2 text-sm whitespace-pre-wrap text-gray-300">
-              Paste valid JSON to render it here.
-            </pre>
+            <div className="p-4 break-normal">Paste valid JSON to render it here.</div>
           ) : isPrimitive(data) ? (
-            <pre
-              className="h-full max-h-full px-3 py-2 text-sm whitespace-pre-wrap"
+            <div
+              className="p-4 break-normal"
               style={{
                 background: darkTheme['--w-rjv-background-color'],
               }}
             >
               {prettifyJson(data)}
-            </pre>
+            </div>
           ) : (
             <JsonView
               value={data}
               style={darkTheme}
-              className="h-full max-h-full px-3 py-2"
               id={inputId}
               displayDataTypes={false}
               shortenTextAfterLength={0}
+              className="h-full p-4"
             />
           )}
         </div>

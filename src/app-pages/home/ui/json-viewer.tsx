@@ -8,6 +8,7 @@ import { ExportJsonButton } from './export-json-button';
 import { ImportJsonButton } from './import-json-button';
 import { JsonInput } from './json-input';
 import { JsonOutput } from './json-output';
+import styles from './json-viewer.module.css';
 
 interface Props {
   initialText?: string;
@@ -30,18 +31,18 @@ export function JsonViewer({ initialText }: Props) {
   };
 
   return (
-    <div>
-      <div className="flex h-[60vh] flex-col gap-4 md:flex-row xl:h-[70vh]">
-        <div className="h-1/2 w-full md:h-full md:w-1/2">
+    <div className="h-full">
+      <div className="flex h-full flex-col gap-4">
+        <div className={styles.pageSection}>
           <ImportJsonButton onLoad={handleImportJson} />
           <JsonInput value={text} onChange={handleJsonInputChange} />
         </div>
-        <div className="h-1/2 w-full md:h-full md:w-1/2">
+        <div className={styles.pageSection}>
           <ExportJsonButton text={text} disabled={Boolean(!text || error)} />
           <JsonOutput data={data} />
         </div>
       </div>
-      <div className="mt-2 min-h-6">{error && <FieldError errors={[{ message: error }]} />}</div>
+      <div>{error && <FieldError errors={[{ message: error }]} />}</div>
     </div>
   );
 }

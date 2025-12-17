@@ -2,6 +2,7 @@ import { ChangeEvent, useId } from 'react';
 import { Field, FieldLabel } from '~/shadcn/ui/field';
 import { ScrollArea } from '~/shadcn/ui/scroll-area';
 import { Textarea } from '~/shadcn/ui/textarea';
+import styles from './json-viewer.module.css';
 
 interface JsonInputProps {
   value: string | undefined;
@@ -13,15 +14,10 @@ export function JsonInput({ value, onChange }: JsonInputProps) {
   const inputId = useId();
 
   return (
-    <Field className="flex h-full min-h-0 flex-col">
+    <Field className={styles.field}>
       <FieldLabel htmlFor={inputId}>Input JSON</FieldLabel>
-      <ScrollArea className="h-full max-h-full min-h-[120px] flex-1">
-        <Textarea
-          id={inputId}
-          value={value}
-          onChange={handleChange}
-          className="h-full max-h-full min-h-[120px]"
-        />
+      <ScrollArea className={styles.scrollableArea}>
+        <Textarea id={inputId} value={value} onChange={handleChange} className="h-full" />
       </ScrollArea>
     </Field>
   );
