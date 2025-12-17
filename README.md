@@ -43,7 +43,7 @@ Nice JSON Viewer is a tool for quickly viewing JSON in a readable format. Just p
 * [Next.js](https://nextjs.org/)
 * [React](https://reactjs.org/)
 * [Tailwind CSS](https://tailwindcss.com/)
-* [@uiw/react-json-view](https://github.com/uiwjs/react-json-view)
+* [react-json-view-lite](github.com/AnyRoad/react-json-view-lite)
 
 ## Getting Started
 

@@ -1,9 +1,10 @@
 'use client';
 import { debounce } from 'lodash-es';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FieldError } from '~/shadcn/ui/field';
 import { parseJson } from '../lib/parse-json';
-import { useSyncInput } from '../model/use-sync-input';
+import { prettifyJson } from '../lib/prettify-json';
+import { jsonDataStorageKey, useSyncInput } from '../model/use-sync-input';
 import { ExportJsonButton } from './export-json-button';
 import { ImportJsonButton } from './import-json-button';
 import { JsonInput } from './json-input';
@@ -13,6 +14,19 @@ import styles from './json-viewer.module.css';
 interface Props {
   initialText?: string;
 }
+
+const initializeInputValue = (initialText?: string) => {
+  if (initialText) {
+    return initialText;
+  }
+
+  const storedJson = localStorage.getItem(jsonDataStorageKey);
+  if (storedJson) {
+    return prettifyJson(JSON.parse(storedJson));
+  }
+
+  return undefined;
+};
 
 export function JsonViewer({ initialText }: Props) {
   const [text, setText] = useState<string | undefined>(initialText);
@@ -29,6 +43,10 @@ export function JsonViewer({ initialText }: Props) {
     setText(content);
     syncInput(content);
   };
+
+  useEffect(() => {
+    setText(initializeInputValue(initialText));
+  }, [initialText]);
 
   return (
     <div className="h-full">
