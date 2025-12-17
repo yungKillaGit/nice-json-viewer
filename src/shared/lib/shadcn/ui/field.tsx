@@ -202,7 +202,9 @@ function FieldError({
 
   if (uniqueErrors.length === 1) {
     const msg = uniqueErrors[0]?.message;
-    if (!msg) return null;
+    if (!msg) {
+      return null;
+    }
     return (
       <div
         role="alert"
