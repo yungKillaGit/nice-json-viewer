@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers';
+import { hasStoredDataCookieKey } from '../lib/constants';
 import { parseJson } from '../lib/parse-json';
 import { prettifyJson } from '../lib/prettify-json';
 import { JsonViewer } from './json-viewer';
@@ -16,5 +18,10 @@ export async function HomePage({
       initialText = prettifyJson(data);
     }
   }
-  return <JsonViewer initialText={initialText} />;
+
+  const cookieStore = await cookies();
+  const hasStoredData = cookieStore.get(hasStoredDataCookieKey);
+  const wait = Boolean(initialText === undefined && hasStoredData);
+
+  return <JsonViewer initialText={initialText} wait={wait} />;
 }

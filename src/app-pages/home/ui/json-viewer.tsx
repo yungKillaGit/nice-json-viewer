@@ -1,7 +1,10 @@
 'use client';
+import Cookies from 'js-cookie';
 import { debounce } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { FieldError } from '~/shadcn/ui/field';
+import { useEffectOnce } from '~/shared/lib/use-effect-once';
+import { hasStoredDataCookieKey } from '../lib/constants';
 import { parseJson } from '../lib/parse-json';
 import { prettifyJson } from '../lib/prettify-json';
 import { jsonDataStorageKey, useSyncInput } from '../model/use-sync-input';
@@ -13,6 +16,7 @@ import styles from './json-viewer.module.css';
 
 interface Props {
   initialText?: string;
+  wait?: boolean;
 }
 
 const initializeInputValue = (initialText?: string) => {
@@ -28,11 +32,12 @@ const initializeInputValue = (initialText?: string) => {
   return undefined;
 };
 
-export function JsonViewer({ initialText }: Props) {
+export function JsonViewer({ initialText, wait }: Props) {
   const [text, setText] = useState<string | undefined>(initialText);
   const { data, error } = parseJson(text);
   const { syncInput } = useSyncInput();
   const debouncedSyncInput = debounce(syncInput, 300);
+  const [isLoading, setIsLoading] = useState(wait);
 
   const handleJsonInputChange = (value: string) => {
     setText(value);
@@ -44,8 +49,17 @@ export function JsonViewer({ initialText }: Props) {
     syncInput(content);
   };
 
+  useEffectOnce(() => {
+    const value = initializeInputValue(initialText);
+    setIsLoading(false);
+    setText(value);
+  });
+
   useEffect(() => {
-    setText(initializeInputValue(initialText));
+    const shouldDeleteCookie = Cookies.get(hasStoredDataCookieKey) && initialText !== undefined;
+    if (shouldDeleteCookie) {
+      Cookies.remove(hasStoredDataCookieKey);
+    }
   }, [initialText]);
 
   return (
@@ -53,11 +67,11 @@ export function JsonViewer({ initialText }: Props) {
       <div className="flex h-full flex-col gap-4 lg:flex-row">
         <div className={styles.pageSection}>
           <ImportJsonButton onLoad={handleImportJson} />
-          <JsonInput value={text} onChange={handleJsonInputChange} />
+          <JsonInput value={text} onChange={handleJsonInputChange} busy={isLoading} />
         </div>
         <div className={styles.pageSection}>
           <ExportJsonButton text={text} disabled={Boolean(!text || error)} />
-          <JsonOutput data={data} />
+          <JsonOutput data={data} busy={isLoading} />
         </div>
       </div>
       <div>{error && <FieldError errors={[{ message: error }]} />}</div>
