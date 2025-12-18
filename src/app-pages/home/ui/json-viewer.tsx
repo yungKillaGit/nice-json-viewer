@@ -1,7 +1,7 @@
 'use client';
 import Cookies from 'js-cookie';
 import { debounce } from 'lodash-es';
-import { useEffect, useState } from 'react';
+import { useDeferredValue, useEffect, useState } from 'react';
 import { FieldError } from '~/shadcn/ui/field';
 import { useEffectOnce } from '~/shared/lib/use-effect-once';
 import { hasStoredDataCookieKey } from '../lib/constants';
@@ -34,7 +34,8 @@ const initializeInputValue = (initialText?: string) => {
 
 export function JsonViewer({ initialText, wait }: Props) {
   const [text, setText] = useState<string | undefined>(initialText);
-  const { data, error } = parseJson(text);
+  const deferredText = useDeferredValue(text);
+  const { data, error } = parseJson(deferredText);
   const { syncInput } = useSyncInput();
   const debouncedSyncInput = debounce(syncInput, 300);
   const [isLoading, setIsLoading] = useState(wait);
