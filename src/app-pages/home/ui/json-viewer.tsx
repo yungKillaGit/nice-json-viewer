@@ -64,8 +64,8 @@ export function JsonViewer({ initialText, wait }: Props) {
   }, [initialText]);
 
   return (
-    <div className="h-full">
-      <div className="flex h-full flex-col gap-4 lg:flex-row">
+    <div className="flex h-full flex-col gap-4">
+      <div className="flex h-full min-h-0 flex-col gap-4 lg:flex-row">
         <div className={styles.pageSection}>
           <ImportJsonButton onLoad={handleImportJson} />
           <JsonInput value={text} onChange={handleJsonInputChange} busy={isLoading} />

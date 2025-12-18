@@ -30,11 +30,11 @@ export function JsonOutput({ data, busy }: JsonOutputProps) {
         {busy ? (
           <Skeleton className="bg-input/30 h-full" />
         ) : (
-          <div className="h-full">
+          <div className="h-full" id={inputId}>
             {data === undefined ? (
-              <div className="p-4 break-normal">Paste valid JSON to render it here.</div>
+              <div className="px-3 py-2 break-normal">Paste valid JSON to render it here.</div>
             ) : isPrimitive(data) ? (
-              <div className="h-full p-4 break-normal">{prettifyJson(data)}</div>
+              <div className="h-full px-3 py-2">{prettifyJson(data)}</div>
             ) : (
               <JsonView data={data} style={jsonViewTheme} />
             )}
